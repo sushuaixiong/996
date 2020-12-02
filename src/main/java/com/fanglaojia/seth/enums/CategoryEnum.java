@@ -34,6 +34,7 @@ public enum CategoryEnum {
      * Electronics category enum.
      */
     ELECTRONICS(40000, "??????"),
+    ELECTRONIC(50000, "时间段"),
     ;
 
     /**
@@ -45,5 +46,6 @@ public enum CategoryEnum {
      * The Name.
      */
     private String name;
+
 }
 
