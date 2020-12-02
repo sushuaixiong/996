@@ -1,0 +1,389 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+<meta http-equiv="Content-Language" content="zh-CN" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-title" content="程序喵">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="apple-touch-icon" sizes="144x144" href="http://www.ibloger.net/zb_users/theme/duxx/style/diy/icon-144x144.png">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<!-- 主题SEO开启 -->
+	<title>Google Guava 快速入门 —— 【集合工具】Lists 类 - Java开发 - 程序喵</title>
+			<meta name="keywords" content="Guava"/>
+	<meta name="description" content="Guava 集合工具类 Lists一、接口声明以下是&nbsp;com.google.common.collect.Lists&nbsp;接口的声明：@GwtCompatible(emulated=true) public&nbsp;final&nbsp;class&"/>
+		<meta name="author" content="X-rapido">
+		<link rel="prev" title="Google Guava 快速入门 —— 【集合工具】Sets 类" href="http://www.ibloger.net/article/3313.html" />
+			<link rel="next" title="Google Guava 快速入门 —— 集合工具类介绍" href="http://www.ibloger.net/article/3311.html" />
+		<link rel="canonical" href="http://www.ibloger.net/article/3312.html" />
+	<link rel="shortlink" href="http://www.ibloger.net/?id=3312" />
+<link rel="shortcut icon" href="http://www.ibloger.net/favicon_16x16.ico">
+<script src="http://www.ibloger.net/zb_system/script/common.js" type="text/javascript"></script>
+<script src="http://www.ibloger.net/zb_system/script/md5.js" type="text/javascript"></script>
+<script src="http://www.ibloger.net/zb_system/script/c_html_js_add.php" type="text/javascript"></script>
+<script type="text/javascript" src="http://www.ibloger.net/zb_users/theme/duxx/script/libs/echo.js"></script>	
+	<!--[if lt IE 9]><script src="http://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
+	<script type="text/javascript" src="http://cdn.bootcss.com/require.js/2.1.9/require.min.js" ></script>
+	<link rel="stylesheet" id="_bootstrap-css"  href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" type="text/css" media="all" />
+	<link rel="stylesheet" id="_fontawesome-css" href="http://cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" type="text/css" media="all" />
+
+<link rel="stylesheet" id="_main-css"  href="http://www.ibloger.net/zb_users/theme/duxx/style/main.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://www.ibloger.net/zb_users/plugin/zbpzan/static/css/zbpzan.css" type="text/css" media="all"/><script src="http://www.ibloger.net/zb_users/plugin/zbpzan/static/js/zbpzan.js" type="text/javascript"></script><script type="text/javascript">var zbPath="http://www.ibloger.net/";var noRmenu = "0";var noSelect = "0";var noF5 = "0";var noF12 = "1";var noIframe = "1";var webGray = "0";var closeSite = "0";var closeTips = "网站正在维护，请稍后再访问……";</script>
+<script type="text/javascript">document.writeln(unescape("%3Cscript src=\""+zbPath+"zb_users/plugin/Jsctrl/jsctrl.js\" type=\"text/javascript\"%3E%3C/script%3E"));</script>
+<link rel="stylesheet" rev="stylesheet" href="http://www.ibloger.net/zb_users/plugin/sf_shortcode/common.css" type="text/css" media="all"/><script type="text/javascript">eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('g(0).h(e(){e d(){0.9=0[b]?\'《程序喵》有更新了新的资源\':a}f b,c,a=0.9;"2"!=4 0.8?(b="8",c="k"):"2"!=4 0.5?(b="5",c="j"):"2"!=4 0.6&&(b="6",c="l"),("2"!=4 0.7||"2"!=4 0[b])&&0.7(c,d,!1)});',22,22,'document||undefined||typeof|mozHidden|webkitHidden|addEventListener|hidden|title|||||function|var|jQuery|ready|Hi|mozvisibilitychange|visibilitychange|webkitvisibilitychange'.split('|'),0,{}))</script>
+<link rel="stylesheet" href="http://www.ibloger.net/zb_users/plugin/LightBox/lightbox/lightbox.css" type="text/css" media="screen" />
+<script type="text/javascript">
+lightBoxH = "http://www.ibloger.net/zb_users/plugin/LightBox/lightbox/lightbox-";
+var lightBoxL = lightBoxH + "ico-loading.gif",
+lightBoxP = lightBoxH + "btn-prev.gif",
+lightBoxN = lightBoxH + "btn-next.gif",
+lightBoxC = lightBoxH + "btn-close.gif",
+lightBoxB = lightBoxH + "blank.gif",
+lightBoxF = 
+false
+;
+</script>
+<script type="text/javascript" src="http://www.ibloger.net/zb_users/plugin/LightBox/lightbox/lightbox.pack.js"></script><script src="http://www.ibloger.net/zb_users/plugin/ttyb_newlypublished/js/tags.js" type="text/javascript"></script><link rel="stylesheet" href="http://www.ibloger.net/zb_users/plugin/ttyb_newlypublished/css/newlypublished.css" type="text/css" />
+<style>
+/*a:hover, .site-navbar li:hover > a, .site-nav .sub-menu li.active>a, .site-nav li.active>a, .site-navbar a:hover, .search-on .site-navbar li.navto-search a, .topbar a:hover,.site-search-form a:hover, .branding-primary .btn:hover, .title .more a:hover, .excerpt h2 a:hover, .excerpt .meta a:hover, .excerpt-minic h2 a:hover, .excerpt-minic .meta a:hover, .article-content .wp-caption:hover .wp-caption-text,.article-nav a:hover, .relates a:hover, .widget_links li a:hover, .widget_categories li a:hover, .widget_ui_comments strong, .widget_divPrevious_inner li a:hover .text, .widget_divPrevious_inner .nopic .text:hover , .widget_meta ul a:hover, .tagcloud a:hover, .textwidget a:hover, .sign h3, #navs .item li a, .url, .url:hover,.widget_divLinkage li a:hover,.pads a:hover h4{color: #76BDFF;}*/
+.btn-primary, .label-primary, .branding-primary, .post-copyright:hover, .article-tags a, .pagination ul > .active > a, .pagination ul > .active > span, .pagenav .current, .widget_ui_tags .items a:hover, .sign .close-link, .pagemenu li.active a, .pageheader, .resetpasssteps li.active, #navs h2, #navs nav, .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary, .tag-clouds a:hover,.widget .widget_divCalendar_inner td a,.action-like,.pads time,.focusmoo a:hover h4{background-color: #76BDFF;}
+.btn-primary, .search-input:focus, #bdcs .bdcs-search-form-input:focus, #submit, .plinks ul li a:hover,.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary{border-color: #76BDFF;}
+.search-btn, .label-primary, #bdcs .bdcs-search-form-submit, #submit, .excerpt .cat{background-color: #76BDFF;}
+.excerpt .cat i{border-left-color:#76BDFF;}
+@media (max-width: 720px) {.site-navbar li.active a, .site-navbar li.active a:hover, .m-nav-show .m-icon-nav{color: #76BDFF;}}
+@media (max-width: 480px) {.pagination ul > li.next-page a{background-color:#76BDFF;}}
+</style>
+
+<!-- 
+ -->
+</head>
+<body class="logged-out single single-post postid-3312 single-format-standard  ">
+
+<header class="header" >
+<div class="container">
+<div class="header-nav" data-type="article" data-infoid="5">	
+<h1 class="logo"><a href="http://www.ibloger.net/" title="程序喵-Google Guava 快速入门 —— 【集合工具】Lists 类"><img src="http://www.ibloger.net/zb_users/theme/duxx/style/diy/logo.png">程序喵</a></h1>
+<div class="brand">择善人而交，择善书而读<br>择善言而听，择善行而从</div><ul class="site-nav site-navbar">
+<li id="nvabar-item-index"><a href="http://www.ibloger.net/">首页</a></li><li id="navbar-category-4"><a href="http://www.ibloger.net/category-5.html">程序开发</a><ul><li id="navbar-category-5"><a href="http://www.ibloger.net/category-5.html">Java开发</a></li><li id="navbar-category-49"><a href="http://www.ibloger.net/category-49.html">微信开发</a></li><li id="navbar-category-16"><a href="http://www.ibloger.net/category-16.html">Web 前端设计语言</a></li><li id="navbar-category-25"><a href="http://www.ibloger.net/category-25.html">Web服务器</a><ul><li id="navbar-category-26"><a href="http://www.ibloger.net/category-26.html">Tomcat</a></li><li id="navbar-category-27"><a href="http://www.ibloger.net/category-27.html">Apache</a></li><li id="navbar-category-29"><a href="http://www.ibloger.net/category-29.html">Nginx</a></li></ul></li><li id="navbar-category-50"><a href="http://www.ibloger.net/category-50.html">面试题</a></li><li id="navbar-category-37"><a href="http://www.ibloger.net/category-37.html">ArcGIS地图</a></li><li id="navbar-category-35"><a href="http://www.ibloger.net/category-35.html">其他语言</a></li></ul></li><li id="navbar-category-10"><a href="http://www.ibloger.net/category-10.html">数据库</a><ul><li id="navbar-category-11"><a href="http://www.ibloger.net/category-11.html">Oracle</a></li><li id="navbar-category-12"><a href="http://www.ibloger.net/category-12.html">MySql</a></li><li id="navbar-category-13"><a href="http://www.ibloger.net/category-13.html">Sql-Server</a></li></ul></li><li id="navbar-category-32"><a href="http://www.ibloger.net/category-32.html">神秘的程序员</a><ul><li id="navbar-category-38"><a href="http://www.ibloger.net/category-38.html">编程人生</a></li><li id="navbar-category-34"><a href="http://www.ibloger.net/category-34.html">电脑实战</a></li><li id="navbar-category-2"><a href="http://www.ibloger.net/category-2.html">网站建设</a></li><li id="navbar-category-36"><a href="http://www.ibloger.net/category-36.html">项目管理</a></li></ul></li><li id="navbar-category-23"><a href="http://www.ibloger.net/category-23.html">科技资讯</a><ul><li id="navbar-category-41"><a href="http://www.ibloger.net/category-41.html">风云人物</a></li></ul></li><li id="navbar-category-18"><a href="http://www.ibloger.net/category-18.html">轻松一刻</a><ul><li id="navbar-category-21"><a href="http://www.ibloger.net/category-21.html">神回复</a></li><li id="navbar-category-22"><a href="http://www.ibloger.net/category-22.html">在线游戏</a></li><li id="navbar-category-46"><a href="http://www.ibloger.net/category-46.html">十二星座</a></li><li id="navbar-category-48"><a href="http://www.ibloger.net/category-48.html">人文阅读</a></li></ul></li><li id="navbar-category-42"><a href="http://www.ibloger.net/category-42.html">常用工具</a><ul><li id="navbar"><a href="http://www.ibloger.net/assets/apps/guangxiao/index.html" target="_blank">光效图生成</a></li><li id="navbar"><a href="http://www.ibloger.net/assets/apps/geekweb/index.html" target="_blank">极客装逼神器</a></li><li id="navbar"><a href="http://www.ibloger.net/web_nav.html" target="_blank">前端网址导航</a></li></ul></li><li class="navto-search"><a href="javascript:;" class="search-show active"><i class="fa fa-search"></i></a></li>
+</ul>
+</div>
+<div class="topbar">
+<ul class="site-nav topmenu">
+<li><a href="http://www.ibloger.net/article/1476.html"><i class="fa fa-plane" aria-hidden="true"></i> 打飞机</a></li>
+<li><a href="http://www.ibloger.net/times.html"><i class="fa fa-clock-o" aria-hidden="true"></i> 时间轴</a></li>
+<li><a href="http://www.ibloger.net/archives.html"><i class="fa fa-book" aria-hidden="true"></i> 归档</a></li>
+<li><a href="http://www.ibloger.net/tags.html"><i class="fa fa-stack-overflow" aria-hidden="true"></i> 标签云</a></li>
+<li><a href="javascript:void(0);" id="fav" onclick="addFavorite()"><i class="fa fa-heart-o" aria-hidden="true"></i> 收藏</a></li><li class="menusns">
+<a href="javascript:;"><i class="fa fa-smile-o" aria-hidden="true"></i> 关注 <i class="fa fa-angle-down"></i></a>
+<ul class="sub-menu">
+<li><a class="sns-zanzhu" href="javascript:;" title="网站赞助" data-src="http://www.ibloger.net/zb_users/theme/duxx/style/diy/zz.jpg"><i class="fa fa-rmb"></i> 网站赞助</a></li>
+<li><a target="_blank" rel="external nofollow" href="http://weibo.com/u/2936898461?is_all=1"><i class="fa fa-weibo"></i> 新浪微博</a></li>
+
+<!--
+<li><a target="_blank" href="http://www.ibloger.net/feed.php"><i class="fa fa-rss"></i> RSS订阅</a></li>-->
+</ul>
+</li>
+</ul>
+		<a href="javascript:;" class="signin-loader">Hi，欢迎您来到程序喵</a>
+		
+</div>
+<i class="fa fa-bars m-icon-nav"></i>
+</div>
+</header>
+<div class="site-search">
+<div class="container">
+<form method="post" class="site-search-form" action="http://www.ibloger.net/zb_system/cmd.php?act=search" ><input class="search-input" name="q" type="text" placeholder="输入关键字" value=""><button class="search-btn" type="submit"><i class="fa fa-search"></i></button></form>	</div>
+</div>
+
+<section class="container">
+<div class="content-wrap">
+<div class="content">
+<header class="article-header">
+<div class="breadcrumbs"><span class="text-muted"><i class="fa fa-home" aria-hidden="true" style="font-size: medium;"></i> 当前位置：</span><a href="http://www.ibloger.net/">首页</a> <small>></small> <a href="http://www.ibloger.net/category-5.html">Java开发</a> <small>></small> <span class="text-muted">Google Guava 快速入门 —— 【集合工具】Lists 类</span>
+<span id="bigScreen"><i class="fa fa-columns" aria-hidden="true" title="大屏模式"></i> 大屏阅读</span>
+<!-- <i class="fa fa-reply" aria-hidden="true" title="返回"></i> -->
+</div>
+<h1 class="article-title"><a href="http://www.ibloger.net/article/3312.html">Google Guava 快速入门 —— 【集合工具】Lists 类</a></h1>
+<div class="article-meta">
+<span class="item"><i class="fa fa-clock-o" aria-hidden="true"></i> 2年前 (2019-02-26)</span>
+<span class="item"><i class="fa fa-bars" aria-hidden="true"></i> 分类：<a href="http://www.ibloger.net/category-5.html" rel="category tag">Java开发</a></span>
+<span class="item post-views"><i class="fa fa-eye" aria-hidden="true"></i> 阅读(1653)</span>
+<span class="item"><i class="fa fa-comment-o" aria-hidden="true"></i> 评论(0)</span>
+	</div>
+</header>
+<article class="article-content">
+<p><a href="http://www.ibloger.net/zb_users/upload/2019/02/201902261551161005151375.jpg" alt="Google Guava 快速入门.jpg"><img class="thumb-post" src="http://www.ibloger.net/zb_users/theme/duxx/style/img/loading.gif"  data-echo="http://www.ibloger.net/zb_users/upload/2019/02/201902261551161005151375.jpg" alt="Google Guava 快速入门.jpg" /></a></p><h2>Guava 集合工具类 Lists</h2><h3>一、接口声明</h3><p>以下是&nbsp;<code>com.google.common.collect.Lists</code>&nbsp;接口的声明：</p><pre class="prism-highlight prism-language-java">@GwtCompatible(emulated=true)
+public&nbsp;final&nbsp;class&nbsp;Lists
+&nbsp;&nbsp;&nbsp;&nbsp;extends&nbsp;Object</pre><h3>二、接口方法</h3><p>官方文档：<a href="https://google.github.io/guava/releases/27.0.1-jre/api/docs/com/google/common/collect/Lists.html" target="_blank">https://google.github.io/guava/releases/27.0.1-jre/api/docs/com/google/common/collect/Lists.html</a></p><table><thead><tr class="firstRow"><th>修饰符和类型</th><th>方法描述</th></tr></thead><tbody><tr><td><code>static&nbsp;&lt;E&gt;&nbsp;List&lt;E&gt;</code></td><td><code>asList(E first, E[] rest)</code>&nbsp;<br/>返回一个不可变的List，其中包含指定的第一个元素和附加的元素数组组成，修改这个数组将反映到返回的List上.</td></tr><tr><td><code>static&nbsp;&lt;E&gt;&nbsp;List&lt;E&gt;</code></td><td><code>asList(E first, E second, E[] rest)</code>&nbsp;<br/>返回一个不可变的List，其中包含指定的第一个元素、第二个元素和附加的元素数组组成，修改这个数组将反映到返回的List上.</td></tr><tr><td><code>static&nbsp;&lt;B&gt;List&lt;List&lt;B&gt;&gt;</code></td><td><code>cartesianProduct(List&lt;?&nbsp;extends&nbsp;B&gt;... lists)</code>&nbsp;<br/>返回通过从各给定集中选择一个元素所形成每一个可能的集合.</td></tr><tr><td><code>static&nbsp;&lt;B&gt;List&lt;List&lt;B&gt;&gt;</code></td><td><code>cartesianProduct(List&lt;?&nbsp;extends&nbsp;List&lt;?&nbsp;extends&nbsp;B&gt;&gt; lists)</code>&nbsp;<br/>返回通过从各给定集中选择一个元素所形成每一个可能的集合.</td></tr><tr><td><code>static List&lt;Character&gt;</code></td><td><code>charactersOf(CharSequence sequence)</code>&nbsp;<br/>返回指定CharSequence的视图作为List&nbsp;<character>，将序列视为Unicode代码单元序列.</character></td></tr><tr><td><code>static ImmutableList&lt;Character&gt;</code></td><td><code>charactersOf(String string)</code>&nbsp;<br/>将传进来的String或者CharSequence分割为单个的字符，并存入到一个ImmutableList对象中返回。.</td></tr><tr><td><code>static&nbsp;&lt;E&gt;&nbsp;ArrayList&lt;E&gt;</code></td><td><code>newArrayList()</code>&nbsp;<br/>构造一个可变的、空的ArrayList实例.</td></tr><tr><td><code>static&nbsp;&lt;E&gt;&nbsp;ArrayList&lt;E&gt;</code></td><td><code>newArrayList(E... elements)</code>&nbsp;<br/>构造一个可变的包含传入元素elements的ArrayList实例.</td></tr><tr><td><code>static&nbsp;&lt;E&gt;&nbsp;ArrayList&lt;E&gt;</code></td><td><code>newArrayList(Iterable&lt;?&nbsp;extends&nbsp;E&gt;&nbsp;elements)</code>&nbsp;<br/>构造一个可变的包含传入元素elements的ArrayList实例.</td></tr><tr><td><code>static&nbsp;&lt;E&gt;&nbsp;ArrayList&lt;E&gt;</code></td><td><code>newArrayList(Iterator&lt;?&nbsp;extends&nbsp;E&gt;&nbsp;elements)</code>&nbsp;<br/>构造一个可变的包含传入元素elements的ArrayList实例.</td></tr><tr><td><code>static&nbsp;&lt;E&gt;&nbsp;ArrayList&lt;E&gt;</code></td><td><code>newArrayListWithCapacity(int initialArraySize)</code>&nbsp;<br/>构造一个分配指定空间大小的ArrayList实例。.</td></tr><tr><td><code>static&nbsp;&lt;E&gt;&nbsp;ArrayList&lt;E&gt;</code></td><td><code>newArrayListWithExpectedSize(int estimatedSize)</code>&nbsp;<br/>构造一个期望长度为estimatedSize的ArrayList实例.</td></tr><tr><td><code>static&nbsp;&lt;E&gt;CopyOnWriteArrayList&lt;E&gt;</code></td><td><code>newCopyOnWriteArrayList()</code>&nbsp;<br/>构造一个空的CopyOnWriteArrayList实例.</td></tr><tr><td><code>static&nbsp;&lt;E&gt;CopyOnWriteArrayList&lt;E&gt;</code></td><td><code>newCopyOnWriteArrayList(Iterable&lt;?&nbsp;extends&nbsp;E&gt;&nbsp;elements)</code>&nbsp;<br/>构造一个包含传入元素elements的CopyOnWriteArrayList实例.</td></tr><tr><td><code>static&nbsp;&lt;E&gt;LinkedList&lt;E&gt;</code></td><td><code>newLinkedList()</code>&nbsp;<br/>构造一个空的LinkedList实例.</td></tr><tr><td><code>static&nbsp;&lt;E&gt;LinkedList&lt;E&gt;</code></td><td><code>newLinkedList(Iterable&lt;?&nbsp;extends&nbsp;E&gt;&nbsp;elements)</code>&nbsp;<br/>构造一个包含传入元素elements的LinkedList实例.</td></tr><tr><td><code>static&nbsp;&lt;T&gt;List&lt;List&lt;T&gt;&gt;</code></td><td><code>partition(List&lt;T&gt;&nbsp;list, int size)</code>&nbsp;<br/>根据size传入的List进行切割，切割成符合要求的小的List，并将这些小的List存入一个新的List对象中返回.</td></tr><tr><td><code>static&nbsp;&lt;T&gt;&nbsp;List&lt;T&gt;</code></td><td><code>reverse(List&lt;T&gt;&nbsp;list)</code>&nbsp;<br/>返回一个传入List内元素倒序后的List.</td></tr><tr><td><code>static&nbsp;&lt;F,T&gt;&nbsp;List&lt;T&gt;</code></td><td><code>transform(List&lt;F&gt;&nbsp;fromList, Function&lt;?&nbsp;super&nbsp;F,?&nbsp;extends&nbsp;T&gt;&nbsp;function)</code>&nbsp;<br/>根据传进来的function对fromList进行相应的处理，并将处理得到的结果存入到新的list对象中返回.</td></tr></tbody></table><h3>三、使用</h3><p>Lists 类主要提供了对List类的子类构造以及操作的静态方法。在Lists类中支持构造&nbsp;<code>ArrayList</code>、<code>LinkedList</code>&nbsp;以及&nbsp;<code>newCopyOnWriteArrayList</code>&nbsp;对象的方法。其中提供了以下构造ArrayList的函数：下面四个构造一个&nbsp;<code>ArrayList</code>&nbsp;对象，但是不显式的给出申请空间的大小：</p><pre class="prism-highlight prism-language-java">newArrayList()
+newArrayList(E...&nbsp;elements)
+newArrayList(Iterable&lt;?&nbsp;extends&nbsp;E&gt;&nbsp;elements)
+newArrayList(Iterator&lt;?&nbsp;extends&nbsp;E&gt;&nbsp;elements)</pre><p>以下两个函数在构造&nbsp;<code>ArrayList</code>&nbsp;对象的时候给出了需要分配空间的大小:</p><pre class="prism-highlight prism-language-java">newArrayListWithCapacity(int&nbsp;initialArraySize)
+newArrayListWithExpectedSize(int&nbsp;estimatedSize)</pre><p>如果你事先知道元素的个数，可以用&nbsp;<code>newArrayListWithCapacity</code>&nbsp;函数；如果你不能确定元素的个数，可以用&nbsp;<code>newArrayListWithExpectedSize</code>&nbsp;函数，在&nbsp;<code>newArrayListWithExpectedSize</code>&nbsp;函数里面调用了&nbsp;<code>computeArrayListCapacity(int arraySize)</code>&nbsp;函数，其实现如下：</p><pre class="prism-highlight prism-language-java">@VisibleForTesting&nbsp;
+static&nbsp;int&nbsp;computeArrayListCapacity(int&nbsp;arraySize)&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;checkArgument(arraySize&nbsp;&gt;=&nbsp;0);
+　　　
+　　//&nbsp;TODO(kevinb):&nbsp;Figure&nbsp;out&nbsp;the&nbsp;right&nbsp;behavior,&nbsp;and&nbsp;document&nbsp;it
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;Ints.saturatedCast(5L&nbsp;+&nbsp;arraySize&nbsp;+&nbsp;(arraySize&nbsp;/&nbsp;10));
+}</pre><p>返回的容量大小为&nbsp;<code>5L + arraySize + (arraySize / 10)</code>，当&nbsp;<code>arraySize</code>&nbsp;比较大的时候，给定大小和真正分配的容量之比为 10/11。</p><p><code>Lists</code>&nbsp;类还支持构造&nbsp;<code>LinkedList</code>、<code>newCopyOnWriteArrayList</code>&nbsp;对象，其函数接口为：</p><pre class="prism-highlight prism-language-java">newLinkedList()
+newLinkedList(Iterable&lt;?&nbsp;extends&nbsp;E&gt;&nbsp;elements)　　　
+newCopyOnWriteArrayList()
+newCopyOnWriteArrayList(Iterable&lt;?&nbsp;extends&nbsp;E&gt;&nbsp;elements)</pre><p>我们还可以将两个（或三个）类型相同的数据存放在一个list中，这样可以传入到只有一个参数的函数或者需要减少参数的函数中，这些函数如下：</p><pre class="prism-highlight prism-language-java">asList(@Nullable&nbsp;E&nbsp;first,&nbsp;E[]&nbsp;rest)
+asList(@Nullable&nbsp;E&nbsp;first,&nbsp;@Nullable&nbsp;E&nbsp;second,&nbsp;E[]&nbsp;rest)</pre><p><code>Lists</code>&nbsp;类中&nbsp;<code>transform</code>&nbsp;函数可以根据传进来的&nbsp;<code>function</code>&nbsp;对&nbsp;<code>fromList</code>&nbsp;进行相应的处理，并将处理得到的结果存入到新的list对象中，这样有利于我们进行分析，函数接口如下：</p><pre class="prism-highlight prism-language-java">public&nbsp;static&nbsp;&lt;F,&nbsp;T&gt;&nbsp;List&lt;T&gt;&nbsp;transform(List&lt;F&gt;&nbsp;fromList,&nbsp;Function&lt;?&nbsp;super&nbsp;F,&nbsp;?&nbsp;extends&nbsp;T&gt;&nbsp;function)</pre><p>使用例子：</p><pre class="prism-highlight prism-language-java">Function&lt;String,&nbsp;Integer&gt;&nbsp;strlen&nbsp;=&nbsp;new&nbsp;Function&lt;String,&nbsp;Integer&gt;()&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;Integer&nbsp;apply(String&nbsp;from)&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Preconditions.checkNotNull(from);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;from.length();
+&nbsp;&nbsp;&nbsp;&nbsp;}
+};
+
+List&lt;String&gt;&nbsp;from&nbsp;=&nbsp;Lists.newArrayList(&quot;abc&quot;,&nbsp;&quot;defg&quot;,&nbsp;&quot;hijkl&quot;);
+List&lt;Integer&gt;&nbsp;to&nbsp;=&nbsp;Lists.transform(from,&nbsp;strlen);
+for&nbsp;(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;from.size();&nbsp;i++)&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;System.out.printf(&quot;%s&nbsp;has&nbsp;length&nbsp;%d\n&quot;,&nbsp;from.get(i),&nbsp;to.get(i));
+}
+
+Function&lt;String,&nbsp;Boolean&gt;&nbsp;isPalindrome&nbsp;=&nbsp;new&nbsp;Function&lt;String,&nbsp;Boolean&gt;()&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;Boolean&nbsp;apply(String&nbsp;from)&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Preconditions.checkNotNull(from);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;StringBuilder(from).reverse().toString().equals(from);
+&nbsp;&nbsp;&nbsp;&nbsp;}
+};
+from&nbsp;=&nbsp;Lists.newArrayList(&quot;rotor&quot;,&nbsp;&quot;radar&quot;,&nbsp;&quot;hannah&quot;,&nbsp;&quot;level&quot;,&nbsp;&quot;botox&quot;);
+List&lt;Boolean&gt;&nbsp;to1&nbsp;=&nbsp;Lists.transform(from,&nbsp;isPalindrome);
+for&nbsp;(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;from.size();&nbsp;i++)&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;System.out.printf(&quot;%s&nbsp;is%sa&nbsp;palindrome\n&quot;,&nbsp;from.get(i),&nbsp;to1.get(i)&nbsp;?&nbsp;&quot;&nbsp;&quot;&nbsp;:&nbsp;&quot;&nbsp;NOT&nbsp;&quot;);
+}
+//&nbsp;changes&nbsp;in&nbsp;the&nbsp;&quot;from&quot;&nbsp;list&nbsp;are&nbsp;reflected&nbsp;in&nbsp;the&nbsp;&quot;to&quot;&nbsp;list
+System.out.printf(&quot;\nnow&nbsp;replace&nbsp;hannah&nbsp;with&nbsp;megan...\n\n&quot;);
+from.set(2,&nbsp;&quot;megan&quot;);
+for&nbsp;(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;from.size();&nbsp;i++)&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;System.out.printf(&quot;%s&nbsp;is%sa&nbsp;palindrome\n&quot;,&nbsp;from.get(i),&nbsp;to1.get(i)&nbsp;?&nbsp;&quot;&nbsp;&quot;&nbsp;:&nbsp;&quot;&nbsp;NOT&nbsp;&quot;);
+}</pre><p><code>Lists</code>&nbsp;还可以将传进来的 String 或者&nbsp;<code>CharSequence</code>&nbsp;分割为单个的字符，并存入到一个新的List对象中返回，如下：</p><pre class="prism-highlight prism-language-java">ImmutableList&lt;Character&gt;&nbsp;wyp&nbsp;=&nbsp;Lists.charactersOf(&quot;wyp&quot;);
+System.out.println(wyp);</pre><h3>四、测试类</h3><pre class="prism-highlight prism-language-java">package&nbsp;com.example.guava.collect;
+
+import&nbsp;com.google.common.base.Function;
+import&nbsp;com.google.common.collect.ImmutableList;
+import&nbsp;com.google.common.collect.Lists;
+import&nbsp;org.checkerframework.checker.nullness.qual.Nullable;
+import&nbsp;org.junit.Test;
+
+import&nbsp;java.util.List;
+
+public&nbsp;class&nbsp;ListsTest&nbsp;{
+
+&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;test1(){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&lt;String&gt;&nbsp;list1&nbsp;=&nbsp;Lists.newArrayList();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;10;&nbsp;i++)&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list1.add(i&nbsp;+&nbsp;&quot;&quot;);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(&quot;list1:&nbsp;&quot;&nbsp;+&nbsp;list1);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//输出：list1:&nbsp;[0,&nbsp;1,&nbsp;2,&nbsp;3,&nbsp;4,&nbsp;5,&nbsp;6,&nbsp;7,&nbsp;8,&nbsp;9]
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//2、传入多参数
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&lt;String&gt;&nbsp;list2&nbsp;=&nbsp;Lists.newArrayList(&quot;1&quot;,&nbsp;&quot;2&quot;,&nbsp;&quot;3&quot;);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(&quot;list2:&nbsp;&quot;&nbsp;+&nbsp;list2);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//输出：list2:&nbsp;[1,&nbsp;2,&nbsp;3]
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//3、传入数组
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&lt;String&gt;&nbsp;list3&nbsp;=&nbsp;Lists.newArrayList(new&nbsp;String[]{&quot;22&quot;,&nbsp;&quot;22&quot;});
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(&quot;list3:&nbsp;&quot;&nbsp;+&nbsp;list3);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//输出：list3:&nbsp;[22,&nbsp;22]
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//4、传入集合
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&lt;String&gt;&nbsp;list4&nbsp;=&nbsp;Lists.newArrayList(list1);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(&quot;list4:&nbsp;&quot;&nbsp;+&nbsp;list4);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//输出：list4:&nbsp;[0,&nbsp;1,&nbsp;2,&nbsp;3,&nbsp;4,&nbsp;5,&nbsp;6,&nbsp;7,&nbsp;8,&nbsp;9]
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//5、使用条件：你确定你的容器会装多少个，不确定就用一般形式的
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//说明：这个容器超过10个还是会自动扩容的。不用担心容量不够用。默认是分配一个容量为10的数组，不够将扩容
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//整个来说的优点有：节约内存，节约时间，节约性能。代码质量提高。
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&lt;String&gt;&nbsp;list&nbsp;=&nbsp;Lists.newArrayListWithExpectedSize(10);
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//这个方法就是直接返回一个10的数组。
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&lt;String&gt;&nbsp;list_&nbsp;=&nbsp;Lists.newArrayListWithCapacity(10);
+&nbsp;&nbsp;&nbsp;&nbsp;}
+
+&nbsp;&nbsp;&nbsp;&nbsp;@Test
+&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;testLists()&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;str&nbsp;=&nbsp;&quot;i&nbsp;love&nbsp;u&quot;;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String[]&nbsp;strs&nbsp;=&nbsp;{&quot;i&nbsp;like&nbsp;u&quot;,&nbsp;&quot;i&nbsp;miss&nbsp;u&quot;};
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&lt;String&gt;&nbsp;list&nbsp;=&nbsp;Lists.asList(str,&nbsp;strs);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(list);&nbsp;&nbsp;&nbsp;//&nbsp;[i&nbsp;love&nbsp;u,&nbsp;i&nbsp;like&nbsp;u,&nbsp;i&nbsp;miss&nbsp;u]
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;strs[1]&nbsp;=&nbsp;&quot;i&nbsp;hate&nbsp;u&quot;;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(list);&nbsp;&nbsp;&nbsp;//&nbsp;[i&nbsp;love&nbsp;u,&nbsp;i&nbsp;like&nbsp;u,&nbsp;i&nbsp;hate&nbsp;u]
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;transform：根据传进来的function对fromList进行相应的处理
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;并将处理得到的结果存入到新的list对象中返回
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&lt;Object&gt;&nbsp;transformList&nbsp;=&nbsp;Lists.transform(list,&nbsp;new&nbsp;Function&lt;String,&nbsp;Object&gt;()&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Override
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;Object&nbsp;apply(@Nullable&nbsp;String&nbsp;input)&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;input.toUpperCase();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(transformList);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//[I&nbsp;LOVE&nbsp;U,&nbsp;I&nbsp;LIKE&nbsp;U,&nbsp;I&nbsp;HATE&nbsp;U]
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;partition：根据size传入的List进行切割，切割成符合要求的小的List
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;并将这些小的List存入一个新的List对象中返回
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&lt;List&lt;String&gt;&gt;&nbsp;lists&nbsp;=&nbsp;Lists.partition(list,&nbsp;2);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(lists);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;[[i&nbsp;love&nbsp;u,&nbsp;i&nbsp;like&nbsp;u],&nbsp;[i&nbsp;hate&nbsp;u]]
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;charactersOf：将传进来的String或者CharSequence分割为单个的字符
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;并存入到一个ImmutableList对象中返回
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;ImmutableList：一个高性能、不可变的、随机访问列表的实现
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ImmutableList&lt;Character&gt;&nbsp;characters&nbsp;=&nbsp;Lists.charactersOf(&quot;tingfeng&quot;);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(characters);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;[t,&nbsp;i,&nbsp;n,&nbsp;g,&nbsp;f,&nbsp;e,&nbsp;n,&nbsp;g]
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;reverse：返回一个传入List内元素倒序后的List
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&lt;String&gt;&nbsp;reverse&nbsp;=&nbsp;Lists.reverse(list);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(reverse);&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;[i&nbsp;hate&nbsp;u,&nbsp;i&nbsp;like&nbsp;u,&nbsp;i&nbsp;love&nbsp;u]
+&nbsp;&nbsp;&nbsp;&nbsp;}
+
+}</pre><h3>五、相关文章</h3><ul class=" list-paddingleft-2" style="list-style-type: disc;"><li><p><a href="http://www.ibloger.net/article/3294.html" target="_blank">Google Guava 快速入门 —— 目录</a></p></li></ul><p><br/></p><p><br/></p>
+<!-- <div style="text-align: center;">
+	<div>
+		<span class="article_wechat_span"> - - - - - - - - </span>
+		关注微信<strong>『程序喵』</strong>订阅号，关注精彩内容
+		<span class="article_wechat_span"> - - - - - - - - </span>
+	</div>
+	<div>
+		<img src="http://www.ibloger.net/zb_users/theme/duxx/style/diy/qrcode.jpg">
+	</div>
+</div> -->
+
+<p class="post-copyright">未经允许请勿转载：<a href="http://www.ibloger.net/">程序喵</a> &raquo; <a href="http://www.ibloger.net/article/3312.html">Google Guava 快速入门 —— 【集合工具】Lists 类</a></p>
+</article>
+	
+	 <!-- <div class="post-like"><a id="zbpzan-3312" class="zbpzan" title="亲 点个赞吧" onclick="zbpzan(3312)" href="javascript:;"><span>0</span></a></div> -->
+
+	<div class="article-social">
+
+				<a href="javascript:;" title="点赞继续加油！" class="action action-like sf-praise-sdk" sfa='click' data-postid='3312' data-value="1" data-ok=''>
+		<i class="fa  fa-thumbs-o-up"></i>点&nbsp;&nbsp;赞 (<span class="sf-praise-sdk" sfa='num' data-value='1' data-postid='3312'>0</span>) 
+		</a>
+		<a href="javascript:;" onclick="daShang()" title="打赏鼓励一下！" class="action ds">
+			<i class="fa fa-gift" aria-hidden="true" style="font-size: medium;"></i>打&nbsp;&nbsp;赏 
+		</a>
+
+					</div>
+				<div class="action-share bdsharebuttonbox">
+			<span style="padding-bottom: 3px;">分享到：</span>
+			<a class="bds_qzone" data-cmd="qzone"></a>
+			<a class="bds_tsina" data-cmd="tsina"></a>
+			<a class="bds_weixin" data-cmd="weixin"></a>
+			<a class="bds_tqq" data-cmd="tqq"></a>
+			<a class="bds_sqq" data-cmd="sqq"></a>
+			<a class="bds_bdhome" data-cmd="bdhome"></a>
+			<a class="bds_tqf" data-cmd="tqf"></a>
+			<a class="bds_ty" data-cmd="ty"></a>
+			<a class="bds_kaixin001" data-cmd="kaixin001"></a>
+			<a class="bds_douban" data-cmd="douban"></a>
+			<a class="bds_mail" data-cmd="mail"></a>
+			<a class="bds_copy" data-cmd="copy"></a>
+			<!-- <a class="bds_more" data-cmd="more"> +More</a> -->
+			<span class="bds_count" data-cmd="count"></span>
+		</div>
+	<div class="article-tags">
+<i class="fa fa-tags" aria-hidden="true" style="color: gray;"></i> 标签：<a href="http://www.ibloger.net/tags-183.html" rel="tag">Guava</a></div>
+<nav class="article-nav">
+<span class="article-nav-prev"><i class="fa fa-hand-o-right mediumIcon" aria-hidden="true"></i> <a title="Google Guava 快速入门 —— 【集合工具】Sets 类" href="http://www.ibloger.net/article/3313.html" rel="prev">Google Guava 快速入门 —— 【集合工具】Sets 类</a></span><span class="article-nav-next"><a title="Google Guava 快速入门 —— 集合工具类介绍" href="http://www.ibloger.net/article/3311.html" rel="next">Google Guava 快速入门 —— 集合工具类介绍</a><i class="fa fa-hand-o-left mediumIcon" aria-hidden="true" style="right: 0;position: absolute;top: 0;"></i></span></nav>
+<div class="pads">
+<ul id="tags_related">
+<li><a href="http://www.ibloger.net/article/3432.html" title="GuavaCache RemovalListener 失效问题原因"><img data-echo="http://www.ibloger.net/zb_users/theme/duxx/style/img/random/14.jpg" class="thumb"/><h4>GuavaCache RemovalListener 失效问题原因</h4><time>Java开发</time></a></li><li><a href="http://www.ibloger.net/article/3294.html" title="Google Guava 快速入门 —— 目录"><img data-echo="http://www.ibloger.net/zb_users/plugin/IMAGE/pic.php?src=aHR0cDovL3d3dy5pYmxvZ2VyLm5ldC96Yl91c2Vycy91cGxvYWQvMjAxOS8wMi8yMDE5MDIyNjE1NTExNjEwMDUxNTEzNzUuanBn&width=181&height=111&cuttype=4" class="thumb"/><h4>Google Guava 快速入门 —— 目录</h4><time>Java开发</time></a></li><li><a href="http://www.ibloger.net/article/3295.html" title="Google Guava 快速入门 —— Guava介绍"><img data-echo="http://www.ibloger.net/zb_users/plugin/IMAGE/pic.php?src=aHR0cDovL3d3dy5pYmxvZ2VyLm5ldC96Yl91c2Vycy91cGxvYWQvMjAxOS8wMi8yMDE5MDIyNjE1NTExNjEwMDUxNTEzNzUuanBn&width=181&height=111&cuttype=4" class="thumb"/><h4>Google Guava 快速入门 —— Guava介绍</h4><time>Java开发</time></a></li><li><a href="http://www.ibloger.net/article/3296.html" title="Google Guava 快速入门 —— 【基础】Optional 类"><img data-echo="http://www.ibloger.net/zb_users/plugin/IMAGE/pic.php?src=aHR0cDovL3d3dy5pYmxvZ2VyLm5ldC96Yl91c2Vycy91cGxvYWQvMjAxOS8wMi8yMDE5MDIyNjE1NTExNjEwMDUxNTEzNzUuanBn&width=181&height=111&cuttype=4" class="thumb"/><h4>Google Guava 快速入门 —— 【基础】Optional 类</h4><time>Java开发</time></a></li><li><a href="http://www.ibloger.net/article/3297.html" title="Google Guava 快速入门 —— 【基础】Objects 类"><img data-echo="http://www.ibloger.net/zb_users/plugin/IMAGE/pic.php?src=aHR0cDovL3d3dy5pYmxvZ2VyLm5ldC96Yl91c2Vycy91cGxvYWQvMjAxOS8wMi8yMDE5MDIyNjE1NTExNjEwMDUxNTEzNzUuanBn&width=181&height=111&cuttype=4" class="thumb"/><h4>Google Guava 快速入门 —— 【基础】Objects 类</h4><time>Java开发</time></a></li><li><a href="http://www.ibloger.net/article/3298.html" title="Google Guava 快速入门 —— 【基础】前置条件 Preconditions 类"><img data-echo="http://www.ibloger.net/zb_users/plugin/IMAGE/pic.php?src=aHR0cDovL3d3dy5pYmxvZ2VyLm5ldC96Yl91c2Vycy91cGxvYWQvMjAxOS8wMi8yMDE5MDIyNjE1NTExNjEwMDUxNTEzNzUuanBn&width=181&height=111&cuttype=4" class="thumb"/><h4>Google Guava 快速入门 —— 【基础】前置条件 Preconditions 类</h4><time>Java开发</time></a></li><li><a href="http://www.ibloger.net/article/3300.html" title="Google Guava 快速入门 —— 【基础】强大的 Ordering 排序类"><img data-echo="http://www.ibloger.net/zb_users/plugin/IMAGE/pic.php?src=aHR0cDovL3d3dy5pYmxvZ2VyLm5ldC96Yl91c2Vycy91cGxvYWQvMjAxOS8wMi8yMDE5MDIyNjE1NTExNjEwMDUxNTEzNzUuanBn&width=181&height=111&cuttype=4" class="thumb"/><h4>Google Guava 快速入门 —— 【基础】强大的 Ordering 排序类</h4><time>Java开发</time></a></li><li><a href="http://www.ibloger.net/article/3301.html" title="Google Guava 快速入门 —— 【基础】区间范围 Range 类"><img data-echo="http://www.ibloger.net/zb_users/plugin/IMAGE/pic.php?src=aHR0cDovL3d3dy5pYmxvZ2VyLm5ldC96Yl91c2Vycy91cGxvYWQvMjAxOS8wMi8yMDE5MDIyNjE1NTExNjEwMDUxNTEzNzUuanBn&width=181&height=111&cuttype=4" class="thumb"/><h4>Google Guava 快速入门 —— 【基础】区间范围 Range 类</h4><time>Java开发</time></a></li></ul>
+</div>
+
+</div>
+</div>
+<aside class="sidebar">
+
+<div class="widget widget_divSearchPanel" id="divSearchPanel">
+<h3 class="title">搜索</h3>
+<div class="widget_inner widget_divSearchPanel_inner"><form name="search" method="post" action="http://www.ibloger.net/zb_system/cmd.php?act=search"><input type="text" name="q" size="11" /> <input type="submit" value="搜索" /></form></div>
+
+</div>
+
+<div class="widget widget_divTags" id="divTags">
+<h3 class="title">热门标签</h3>
+
+<ul class="widget_divTags_inner"><div class="tags-box"><a href="http://www.ibloger.net/tags-12.html" class="tag-link-12" title="215个话题" style="font-size: 13px;"> Java </a><a href="http://www.ibloger.net/tags-62.html" class="tag-link-62" title="58个话题" style="font-size: 13px;"> 情人节 </a><a href="http://www.ibloger.net/tags-98.html" class="tag-link-98" title="211个话题" style="font-size: 13px;"> 程序员 </a><a href="http://www.ibloger.net/tags-136.html" class="tag-link-136" title="63个话题" style="font-size: 13px;"> 服务器 </a><a href="http://www.ibloger.net/tags-139.html" class="tag-link-139" title="43个话题" style="font-size: 13px;"> JS </a><a href="http://www.ibloger.net/tags-161.html" class="tag-link-161" title="118个话题" style="font-size: 13px;"> 程序猿 </a><a href="http://www.ibloger.net/tags-183.html" class="tag-link-183" title="52个话题" style="font-size: 13px;"> Guava </a><a href="http://www.ibloger.net/tags-228.html" class="tag-link-228" title="43个话题" style="font-size: 13px;"> MyEclipse </a><a href="http://www.ibloger.net/tags-229.html" class="tag-link-229" title="47个话题" style="font-size: 13px;"> 开发工具 </a><a href="http://www.ibloger.net/tags-247.html" class="tag-link-247" title="58个话题" style="font-size: 13px;"> Oracle </a><a href="http://www.ibloger.net/tags-248.html" class="tag-link-248" title="66个话题" style="font-size: 13px;"> 数据库 </a><a href="http://www.ibloger.net/tags-399.html" class="tag-link-399" title="70个话题" style="font-size: 13px;"> 神秘的程序员 </a><a href="http://www.ibloger.net/tags-416.html" class="tag-link-416" title="40个话题" style="font-size: 13px;"> ArcGIS </a><a href="http://www.ibloger.net/tags-417.html" class="tag-link-417" title="40个话题" style="font-size: 13px;"> 地图开发 </a><a href="http://www.ibloger.net/tags-564.html" class="tag-link-564" title="33个话题" style="font-size: 13px;"> Google </a><a href="http://www.ibloger.net/tags-566.html" class="tag-link-566" title="128个话题" style="font-size: 13px;"> 程序媛 </a><a href="http://www.ibloger.net/tags-569.html" class="tag-link-569" title="48个话题" style="font-size: 13px;"> 恋爱 </a><a href="http://www.ibloger.net/tags-574.html" class="tag-link-574" title="35个话题" style="font-size: 13px;"> 谷歌 </a><a href="http://www.ibloger.net/tags-578.html" class="tag-link-578" title="155个话题" style="font-size: 13px;"> 神秘的程序猿 </a><a href="http://www.ibloger.net/tags-582.html" class="tag-link-582" title="72个话题" style="font-size: 13px;"> 表白 </a><a href="http://www.ibloger.net/tags-583.html" class="tag-link-583" title="43个话题" style="font-size: 13px;"> 爱情 </a><a href="http://www.ibloger.net/tags-630.html" class="tag-link-630" title="37个话题" style="font-size: 13px;"> 视频 </a><a href="http://www.ibloger.net/tags-764.html" class="tag-link-764" title="66个话题" style="font-size: 13px;"> 十二星座 </a><a href="http://www.ibloger.net/tags-1559.html" class="tag-link-1559" title="35个话题" style="font-size: 13px;"> MacOS </a><a href="http://www.ibloger.net/tags-1579.html" class="tag-link-1579" title="34个话题" style="font-size: 13px;"> Python教程 </a><a href="http://www.ibloger.net/tags.html" class="allTags" title="所有热门标签" style="font-size: 13px;">所有热门标签 </a></div></ul>
+</div>
+
+<div class="widget widget_Tblogpublished" id="Tblogpublished">
+<h3 class="title">随机文章</h3>
+
+<ul class="widget_Tblogpublished_inner"><li><a href="http://www.ibloger.net/article/3473.html" class="picbox" rel="bookmark" title="IntelliJ IDEA 2020新版本查看内存使用情况"><img src="http://www.ibloger.net/zb_users/upload/2020/11/202011131605198560838760.png" class="thumb" width="50" height="50" title="IntelliJ IDEA 2020新版本查看内存使用情况" alt="IntelliJ IDEA 2020新版本查看内存使用情况" /></a><h4 class="title"><a href="http://www.ibloger.net/article/3473.html" title="IntelliJ IDEA 2020新版本查看内存使用情况">IntelliJ IDEA 2020新版本查看内存使用情况</a></h4><p class="postmeta"><span class="time">2020-11-13</span><span class="eye">阅读（146）</span></p></li></ul>
+</div>
+</aside>
+</section>
+
+<!--FOOTER_CODE_START-->
+<footer class="footer">
+<div class="container">
+<div class="flinks"><ul class="xoxo blogroll"><strong>友情链接</strong><li><a href="http://www.tiezis.com" target="_blank" title="增长创客知识公园"><i class="fa fa-drupal"></i> 铁子说 </a></li><li><a href="http://www.lanqibing.com" target="_blank"><i class="fa fa-drupal"></i> 蓝骑兵 </a></li><li><a href="http://www.deanhan.cn/" target="_blank"><i class="fa fa-drupal"></i> 逐梦博客 </a></li><li><a href="http://www.itxueguan.com" target="_blank"><i class="fa fa-drupal"></i> IT学馆 </a></li><li><a href="http://books.chengxumiao.net" target="_blank"><i class="fa fa-drupal"></i> 程序员书籍大全 </a></li><li><a href="http://www.ssleye.com" target="_blank"><i class="fa fa-drupal"></I> SSL在线工具 </a></li><li><a href="http://www.bluestep.cc" target="_blank"><i class="fa fa-drupal"></I> 蓝文资源库 </a></li></ul></div><!-- 还请高抬贵手保留版权，这样开发者才有动力做出更牛逼的东西 -->
+<p class="copy_right"><hr>
+		</p>
+<p><br>Copyright ©2017 ibloger.net. All rights reserved.<br><br>程序喵努力做到程序员, 工程师, 开发者们工作，生活娱乐中的必备网站之一 &nbsp;&nbsp;</p>
+<p><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260654796'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1260654796%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></p><!-- 还请高抬贵手保留版权，这样开发者才有动力做出更牛逼的东西 -->
+</div>
+	
+
+<table class="table-nav" style="height: 56px; display: table;">
+<tbody>
+<tr>
+<td class="table-one"></td>
+<td class="table-two" style="color: rgb(90, 90, 90);">在多说无益的时候，也许沉默就是最好的解释。</td>
+<td class="table-three"></td>
+</tr>
+</tbody>
+</table>
+
+</footer>
+<script type="text/javascript">
+	window.jsui={
+	www: 'http://www.ibloger.net/', 
+	uri: 'http://www.ibloger.net/zb_users/theme/duxx',
+		face: 'http://www.ibloger.net/zb_users/emotion/face',
+		ver: '2016-09-21',
+			roll: ["1","3"],
+	ajaxpager: '0'
+	};
+	require.config({
+	baseUrl: jsui.uri + '/script',
+	urlArgs: 'ver=' + jsui.ver,
+	paths: {
+	'bootstrap'     : 'http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min',
+	'ias'           : 'libs/ias.min',
+	'hammer'        : 'libs/hammer.min',
+	'main'          : 'main',
+	'signpop'       : 'signpop',
+	'comment'       : 'comment'
+	}
+	})
+	require(['bootstrap'], function (){
+		require(['main']);
+	})
+
+</script>
+
+<script>(function(){ var bp = document.createElement('script'); var curProtocol = window.location.protocol.split(':')[0]; if (curProtocol === 'https') { bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'; } else { bp.src = 'http://push.zhanzhang.baidu.com/push.js'; } var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(bp, s); var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?72ecbc45ee56b9f2cb8d74035ce1d9d8":"https://jspassport.ssl.qhimg.com/11.0.1.js?72ecbc45ee56b9f2cb8d74035ce1d9d8"; document.write('<script src="' + src + '" id="sozz"><\/script>');})();</script><link rel="stylesheet" href="http://www.ibloger.net/zb_users/plugin/sf_praise_sdk/cssanimate.css" type="text/css" /><script type="text/javascript" src="http://www.ibloger.net/zb_users/plugin/sf_praise_sdk/js/sf_praise_sdk.js"></script>
+<script src="http://www.ibloger.net/zb_users/plugin/Codemo/js/main.js"></script>
+
+<!--<script src="http://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js" opacity='0.6'></script>-->
+<!-- <script type="text/javascript" src="http://www.ibloger.net/zb_users/theme/duxx/script/magic_star.js"></script> -->
+<!-- <script type="text/javascript" src="http://www.ibloger.net/zb_users/theme/duxx/script/heart-code.js"></script> -->
+ 
+</body>
+</html>
