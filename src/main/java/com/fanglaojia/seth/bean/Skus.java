@@ -28,6 +28,12 @@ public class Skus {
     /**
      * 
      */
+    private String myage;
+    
+    
+    /**
+     * 
+     */
     private String className;
     
 /**
