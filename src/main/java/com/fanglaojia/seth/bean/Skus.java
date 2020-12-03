@@ -30,6 +30,10 @@ public class Skus {
      */
     private String className;
     
+/**
+ * 
+ */
+private String myname;
 
 
     /**
