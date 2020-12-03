@@ -35,6 +35,12 @@ public class Skus {
  */
 private String myname;
 
+/**
+ * 
+ */
+private String yourname;
+
+
 
     /**
      * The Sku id.
