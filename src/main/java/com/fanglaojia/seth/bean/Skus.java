@@ -24,6 +24,12 @@ public class Skus {
      * 年龄
      */
     private String age;
+    
+    /**
+     * 
+     */
+    private String className;
+    
 
 
     /**
